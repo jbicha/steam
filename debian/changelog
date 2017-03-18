@@ -1,3 +1,10 @@
+steam (1:1.0.0.55) UNRELEASED; urgency=medium
+
+  * Fix package conflict with Ubuntu
+  * Main package is now named 'steam' again
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Thu, 16 Mar 2017 15:05:35 -0400
+
 steam (1.0.0.54) precise; urgency=medium
 
   * Update controller udev rules to let Steam write to DualShock 4 HID nodes

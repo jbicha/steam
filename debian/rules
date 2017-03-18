@@ -5,3 +5,8 @@ export DH_VERBOSE=1
 
 %:
 	dh $@ --with=python2
+
+# Don't use an epoch for steam-launcher
+override_dh_gencontrol:
+	dh_gencontrol -psteam-launcher -- -v$(dversion)
+	dh_gencontrol --remaining-packages

@@ -7,11 +7,9 @@ Build-Depends: debhelper (>= 8.0.0),
 Standards-Version: 3.9.4
 Homepage: http://www.steampowered.com/
 
-Package: steam-launcher
-Architecture: all
+Package: steam
+Architecture: i386
 Multi-Arch: foreign
-Replaces: steam, steam64
-Breaks: steam64
 Depends: ${misc:Depends},
          ${python:Depends},
          curl,
@@ -21,15 +19,37 @@ Depends: ${misc:Depends},
          xz-utils,
          zenity
 Recommends: jockey-common
+Breaks: steam64 (<< 1.0.0.30),
+        steam-devices (<< 1.0.0.55),
+        steam-launcher (<< 1.0.0.55),
+Replaces: steam64 (<< 1.0.0.30),
+          steam-devices (<< 1.0.0.55),
+          steam-launcher (<< 1.0.0.55),
 Description: Launcher for the Steam software distribution service
  Steam is a software distribution service with an online store, automated
  installation, automatic updates, achievements, SteamCloud synchronized
  savegame and screenshot functionality, and many social features.
 
-Package: steam
+Package: steam-launcher
+Architecture: all
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+ steam (>= ${source:Version})
+Description: Launcher for the Steam software distribution service
+ Steam is a software distribution service with an online store, automated
+ installation, automatic updates, achievements, SteamCloud synchronized
+ savegame and screenshot functionality, and many social features.
+
+Package: steam-devices
 Section: oldlibs
 Priority: extra
-Architecture: i386
-Depends: steam-launcher (>= ${source:Version})
-Description: Launcher for the Steam software distribution service
- This is a transitional package that can be safely removed once steam-launcher is installed.
+Architecture: all
+Depends: steam (>= ${source:Version})
+Description: Launcher for the Steam software distribution service (transitional)
+ Steam is a software distribution service with an online store, automated
+ installation, automatic updates, achievements, SteamCloud synchronized
+ savegame and screenshot functionality, and many social features.
+
+ This is a transitional package that can be safely removed once steam is installed.
